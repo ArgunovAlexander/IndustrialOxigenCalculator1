@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Variant1" />
-        <activity android:name=".Variant2"></activity>
+        <activity android:name=".Variant2" />
+        <activity android:name=".DetailedSolution"></activity>
     </application>
 
 </manifest>
