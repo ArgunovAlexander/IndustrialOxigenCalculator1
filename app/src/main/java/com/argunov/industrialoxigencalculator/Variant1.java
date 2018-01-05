@@ -18,7 +18,7 @@ public class Variant1 extends AppCompatActivity {
         setContentView(R.layout.activity_variant1);
     }
 
-    public void onCalculateVariant1(View view) {
+    public void onCalcOxyFlow(View view) {
         double air=getAirFlow();
         double oxyConc=getOxyConc();
         double oxyFlow=CalcOxy.calculateOxygenFlow(air,oxyConc,CalcOxy.OXYGEN_IN_AIR_CONC_BY_VOL,CalcOxy.OXYGEN_PURITY);

@@ -42,7 +42,18 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="21dp"
-        android:onClick="onCalculateVariant2"
+        android:onClick="onCalcOxyConc"
         android:text="@string/find_oxy_conc" />
+
+    <Button
+        android:id="@+id/calcMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="21dp"
+        android:onClick="onCalcMore"
+        android:text="@string/find_detailed" />
 
 </LinearLayout>

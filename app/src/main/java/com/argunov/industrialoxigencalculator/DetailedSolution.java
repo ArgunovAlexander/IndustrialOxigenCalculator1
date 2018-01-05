@@ -12,6 +12,9 @@ public class DetailedSolution extends AppCompatActivity {
         setContentView(R.layout.activity_detailed_solution);
     }
     public void onCalcDissipation(View view) {
+        double airFlow=getIntent().getDoubleExtra("airFlow",0);
+        double oxyFlow=getIntent().getDoubleExtra("oxyFlow",0);
+        double oxyConc=getIntent().getDoubleExtra("oxyConc",0);
 
     }
 }

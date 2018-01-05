@@ -2,9 +2,11 @@
 
 package com.argunov.industrialoxigencalculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,18 +14,25 @@ import android.widget.Toast;
 import static java.lang.String.format;
 
 public class Variant2 extends AppCompatActivity {
-
-    @Override
+    private double airFlowIv;
+    private double oxyFlowIv;
+    private double oxyConcIv;
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_variant2);
+        findViewById(R.id.calcMore).setEnabled(false);
+
     }
 
-    public void onCalculateVariant2(View view) {
+    public void onCalcOxyConc(View view) {
         double air=getAirFlow();
         double oxygen=getOxygenFlow();
         double oxygenConcentration=CalcOxy.calcEnrichAirOxyConc(air,oxygen,CalcOxy.OXYGEN_IN_AIR_CONC_BY_VOL,CalcOxy.OXYGEN_PURITY);
         printOxygenConcentration(oxygenConcentration,air,oxygen);
+        airFlowIv=air;
+        oxyFlowIv=oxygen;
+        oxyConcIv=oxygenConcentration;
      }
 
     private void printOxygenConcentration(double oxygenConcentration, double airFlow , double oxygenFlow){
@@ -55,5 +64,13 @@ public class Variant2 extends AppCompatActivity {
 
     private void dispToast() {
         Toast.makeText(this, getString(R.string.message), Toast.LENGTH_LONG ).show();
+    }
+
+    public void onCalcMore(View view) {
+        Intent intent = new Intent(this, DetailedSolution.class);
+        intent.putExtra("airFlow",airFlowIv)
+              .putExtra("oxyFlow",oxyFlowIv)
+              .putExtra("oxyConc",oxyConcIv);
+        startActivity(intent);
     }
 }

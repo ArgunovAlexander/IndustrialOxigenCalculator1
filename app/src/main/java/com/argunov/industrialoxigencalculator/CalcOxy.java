@@ -1,6 +1,10 @@
 package com.argunov.industrialoxigencalculator;
 
- class CalcOxy {
+import android.widget.TextView;
+
+import static java.lang.String.format;
+
+class CalcOxy {
     static final double OXYGEN_IN_AIR_CONC_BY_VOL=20.9;
     static final double OXYGEN_PURITY=99.5;
     //static final double OXYGEN_DENSITY=1.3315;
@@ -20,4 +24,6 @@ package com.argunov.industrialoxigencalculator;
                                                 double oxygenPurityByVol) {
         return (air*(enrichAirOxyConcByVol-oxygenInAirByVol))/(oxygenPurityByVol-oxygenInAirByVol);
     }
+
+
 }

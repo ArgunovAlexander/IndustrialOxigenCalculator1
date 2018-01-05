@@ -41,6 +41,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="21dp"
-        android:onClick="onCalculateVariant1"
+        android:onClick="onCalcOxyFlow"
         android:text="@string/find_oxy_flow" />
 </LinearLayout>
