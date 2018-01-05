@@ -22,6 +22,7 @@ public class Variant2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_variant2);
         findViewById(R.id.calcMore).setEnabled(false);
+        findViewById(R.id.variant2).setEnabled(true);
 
     }
 
@@ -41,6 +42,9 @@ public class Variant2 extends AppCompatActivity {
         message+=format(getString(R.string.oxy_flow)+"\n%.0f\n",oxygenFlow);
         TextView textView=findViewById(R.id.outputData);
         textView.setText(message);
+        findViewById(R.id.calcMore).setEnabled(true);
+        findViewById(R.id.variant2).setEnabled(false);
+
     }
 
     private double getOxygenFlow() {
