@@ -10,6 +10,6 @@
     <string name="oxy_flow_tvd">Расход кислорода \nпо прибору ТВД (ТК)</string>
     <string name="find_air_dissipation">Рассчитать потери воздуха \n(СНОРТ, утечки и т.п.)</string>
 
-    <string name="find_detailed">Уточнить рассчет!</string>
+    <string name="find_detailed">Уточнить расчет</string>
 
 </resources>

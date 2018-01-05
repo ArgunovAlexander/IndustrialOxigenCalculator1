@@ -18,7 +18,7 @@ tools:context=".DetailedSolution">
         />
 
     <EditText
-    android:id="@+id/inputOxyFlow"
+    android:id="@+id/inputOxyConc"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:ems="20"
@@ -32,7 +32,7 @@ tools:context=".DetailedSolution">
     android:id="@+id/outputData"
     />
 <Button
-    android:id="@+id/variant1"
+    android:id="@+id/calcDissipation"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
