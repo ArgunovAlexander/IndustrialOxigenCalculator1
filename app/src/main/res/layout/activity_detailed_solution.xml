@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
 android:paddingBottom="16dp"
@@ -11,11 +12,6 @@ android:paddingTop="16dp"
 tools:context=".DetailedSolution">
 
 <!--find air dissipation-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/calcValues"
-        />
 
     <EditText
     android:id="@+id/inputOxyConc"
@@ -23,14 +19,10 @@ tools:context=".DetailedSolution">
     android:layout_height="wrap_content"
     android:ems="20"
     android:inputType="numberDecimal"
-    android:hint="@string/oxy_flow_tvd"
+    android:hint="@string/oxy_conc_dp"
     />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/outputData"
-    />
+
 <Button
     android:id="@+id/calcDissipation"
     android:layout_width="wrap_content"
@@ -41,4 +33,10 @@ tools:context=".DetailedSolution">
     android:layout_marginTop="21dp"
     android:onClick="onCalcDissipation"
     android:text="@string/find_air_dissipation" />
+
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/outputData"
+        />
 </LinearLayout>

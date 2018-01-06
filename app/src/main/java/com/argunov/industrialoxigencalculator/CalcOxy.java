@@ -13,21 +13,18 @@ class CalcOxy {
     static double calcEnrichAirOxyConc(double air, double oxygen, double OxygenInAirByVol,
                                               double oxygenPurityByVol) {
         double oxygenInAir=air*OxygenInAirByVol/100; //returns quantity of oxygen in the same as air measure units
-        System.out.println(oxygenInAir);
-        double oxygenInOxygen=oxygen*oxygenPurityByVol/100; //returns quantity of oxygen in oxigen in the same as oxygen measure units
-        System.out.println(oxygenInOxygen);
-        System.out.println(oxygenInAir+oxygenInOxygen);
-        System.out.println(air+oxygen);
+        double oxygenInOxygen=oxygen*oxygenPurityByVol/100; //returns quantity of oxygen in oxygen in the same as oxygen measure units
         return (oxygenInAir+oxygenInOxygen)/(air+oxygen)*100;//calculates enriched air oxygen concentration
     }
     static double calculateOxygenFlow (double air, double enrichAirOxyConcByVol, double oxygenInAirByVol,
                                                 double oxygenPurityByVol) {
         return (air*(enrichAirOxyConcByVol-oxygenInAirByVol))/(oxygenPurityByVol-oxygenInAirByVol);
     }
-    public static double calcDissipation (double air, double oxyFlow, double enrichAirOxyConcByVol,
-                                           double FurnaceOxyConcByVol, double oxygenInAirByVol,
-                                           double oxygenPurityByVol) {
-                return air-oxyFlow/(oxygenPurityByVol-oxygenInAirByVol)/(enrichAirOxyConcByVol-oxygenInAirByVol);
+    public static double calcDissipation (double air, double oxyFlow, double FurnaceOxyConcByVol,
+                                          double oxygenInAirByVol, double oxygenPurityByVol) {
+        System.out.println("******airFlow********"+ air+"\noxyFlow"+oxyFlow+ "\nFurnaceOxyConc"
+                +FurnaceOxyConcByVol+"******"+oxyFlow*(oxygenPurityByVol-oxygenInAirByVol)/(FurnaceOxyConcByVol-oxygenInAirByVol));
+                return oxyFlow*(oxygenPurityByVol-oxygenInAirByVol)/(FurnaceOxyConcByVol-oxygenInAirByVol)-air;
     }
 
 }

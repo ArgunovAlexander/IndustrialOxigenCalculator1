@@ -7,7 +7,7 @@
     <string name="air_flow">Расход доменного \nдутья </string>
     <string name="enrich_air_oxy_conc">Содержание кислорода \nв дутье </string>
     <string name="message">Вы забыли ввести данные. Введите данные. Допускаются цифры и точка</string>
-    <string name="oxy_flow_tvd">Расход кислорода \nпо прибору ТВД (ТК)</string>
+    <string name="oxy_conc_dp">Содержание кислорода в дутье \nпо прибору на ДП</string>
     <string name="find_air_dissipation">Рассчитать потери воздуха \n(СНОРТ, утечки и т.п.)</string>
 
     <string name="find_detailed">Уточнить расчет</string>
