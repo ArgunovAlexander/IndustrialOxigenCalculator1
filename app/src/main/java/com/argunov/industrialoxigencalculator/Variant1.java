@@ -28,13 +28,11 @@ public class Variant1 extends AppCompatActivity {
     }
 
     private void printOxyFlow(double oxygenConcentration, double airFlow , double oxygenFlow){
-        //String message=format(getString(R.string.oxy_flow)+"%1$.0f"+getString(R.string.air_flow)+"%2$.0f"+getString(R.string.enrich_air_oxy_conc)+"%3$.0f",oxygenFlow,airFlow,oxygenConcentration);
         String message=format(getString(R.string.oxy_flow)+"\n%.1f\n",oxygenFlow);
         message+=format(getString(R.string.air_flow)+"\n%.0f\n",airFlow);
         message+=format(getString(R.string.enrich_air_oxy_conc)+"\n%.1f\n",oxygenConcentration);
         TextView textView=findViewById(R.id.outputData);
         textView.setText(message);
-        //System.out.println("*************"+message+"\n"+oxygenConcentration+"\n"+airFlow+"\n"+oxygenFlow+"\n"+R.string.oxy_flow);
     }
 
     private double getOxyConc() {
@@ -68,4 +66,5 @@ public class Variant1 extends AppCompatActivity {
     private void dispToast() {
         Toast.makeText(this, getString(R.string.message), Toast.LENGTH_LONG ).show();
     }
+
 }

@@ -2,13 +2,17 @@
     <string name="app_name">Кислородный калькулятор</string>
     <string name="find_oxy_flow">Найти расход О2 </string>
     <string name="find_oxy_conc">Найти содержание О2 в дутье</string>
+    <string name="enter_oxyConc">Введите содержание кислорода в дутье </string>
+
+    <string name="air_conc_by_default">22%</string>
+
 
     <string name="oxy_flow">Расход кислорода </string>
-    <string name="air_flow">Расход доменного \nдутья </string>
-    <string name="enrich_air_oxy_conc">Содержание кислорода \nв дутье </string>
+    <string name="air_flow">Расход доменного дутья </string>
+    <string name="enrich_air_oxy_conc">Содержание кислорода в дутье </string>
     <string name="message">Вы забыли ввести данные. Введите данные. Допускаются цифры и точка</string>
-    <string name="oxy_conc_dp">Содержание кислорода в дутье \nпо прибору на ДП</string>
-    <string name="find_air_dissipation">Рассчитать потери воздуха \n(СНОРТ, утечки и т.п.)</string>
+    <string name="oxy_conc_dp">Содержание кислорода в дутье по прибору на ДП</string>
+    <string name="find_air_dissipation">Рассчитать потери воздуха (СНОРТ, утечки и т.п.)</string>
 
     <string name="find_detailed">Уточнить расчет</string>
 

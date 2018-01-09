@@ -12,27 +12,70 @@
 
     <!--find oxygen flow-->
 
-    <EditText
-        android:id="@+id/inputEnrichAirOxyConc"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="20"
-        android:inputType="numberDecimal"
-        android:hint="@string/enrich_air_oxy_conc"
-        />
+        android:text="@string/enter_oxyConc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="-"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+        <EditText
+            android:id="@+id/inputEnrichAirOxyConc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/air_conc_by_default"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp"
+            android:layout_weight="1"
+
+            />
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+
+    </LinearLayout>
+
+
+
     <EditText
         android:id="@+id/inputBlastFurnaceAirFlow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="20"
-        android:inputType="numberDecimal"
         android:hint="@string/air_flow"
-        />
+        android:inputType="numberDecimal" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/outputData"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/variant1"
         android:layout_width="wrap_content"
