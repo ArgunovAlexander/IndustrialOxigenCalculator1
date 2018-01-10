@@ -10,7 +10,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
+
+import java.util.Locale;
+
 import static java.lang.String.format;
+
 
 public class Variant1 extends AppCompatActivity {
 
@@ -18,19 +23,54 @@ public class Variant1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_variant1);
+
+        TextView incrOxyPercent=findViewById(R.id.incrOxyPer);
+        incrOxyPercent.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increment((EditText) findViewById(R.id.inputEnrichAirOxyConc),0.1d,"%.1f");
+            }
+        });
+
+
+        TextView decrOxyPercent=findViewById(R.id.decrOxyPer);
+        decrOxyPercent.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increment((EditText) findViewById(R.id.inputEnrichAirOxyConc),-0.1d,"%.1f");
+            }
+        });
+
+
+        TextView incrAirFlow=findViewById(R.id.incrAirFlow);
+        incrAirFlow.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increment((EditText) findViewById(R.id.inputBlastFurnaceAirFlow),5,"%.0f");
+            }
+        });
+
+
+        TextView decrAirFlow=findViewById(R.id.decrAirFlow);
+        decrAirFlow.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increment((EditText) findViewById(R.id.inputBlastFurnaceAirFlow),-5,"%.0f");
+            }
+        });
     }
 
     public void onCalcOxyFlow(View view) {
         double air=getAirFlow();
         double oxyConc=getOxyConc();
-        double oxyFlow=CalcOxy.calculateOxygenFlow(air,oxyConc,CalcOxy.OXYGEN_IN_AIR_CONC_BY_VOL,CalcOxy.OXYGEN_PURITY);
-        printOxyFlow(oxyConc,air,oxyFlow);
+        double oxyPur=getIntent().getDoubleExtra("oxyPur",99.5);
+        double oxyInAir=getIntent().getDoubleExtra("oxyInAir",20.7);
+        double oxyFlow=CalcOxy.calculateOxygenFlow(air,oxyConc,oxyInAir,oxyPur);
+        printOxyFlow(oxyFlow);
     }
 
-    private void printOxyFlow(double oxygenConcentration, double airFlow , double oxygenFlow){
-        String message=format(getString(R.string.oxy_flow)+"\n%.1f\n",oxygenFlow);
-        message+=format(getString(R.string.air_flow)+"\n%.0f\n",airFlow);
-        message+=format(getString(R.string.enrich_air_oxy_conc)+"\n%.1f\n",oxygenConcentration);
+    private void printOxyFlow(double oxygenFlow){
+        String message=format(Locale.US,getString(R.string.oxy_flow)+"%.1f",oxygenFlow);
         TextView textView=findViewById(R.id.outputData);
         textView.setText(message);
     }
@@ -67,4 +107,11 @@ public class Variant1 extends AppCompatActivity {
         Toast.makeText(this, getString(R.string.message), Toast.LENGTH_LONG ).show();
     }
 
+    private void increment(EditText editText, double step, String format) {
+        hideKeyboard();
+        double value=Double.valueOf(editText.getText().toString());
+        value+=step;
+        editText.setText(format(Locale.US,format,value));
+    }
 }
+

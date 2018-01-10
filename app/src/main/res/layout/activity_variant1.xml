@@ -21,10 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
 
 
         <TextView
+
+            android:id="@+id/decrOxyPer"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -39,7 +42,7 @@
             android:id="@+id/inputEnrichAirOxyConc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/air_conc_by_default"
+            android:text="@string/air_conc_by_default"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -48,6 +51,7 @@
 
             />
         <TextView
+            android:id="@+id/incrOxyPer"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -61,29 +65,88 @@
 
     </LinearLayout>
 
-
-
-    <EditText
-        android:id="@+id/inputBlastFurnaceAirFlow"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="20"
-        android:hint="@string/air_flow"
-        android:inputType="numberDecimal" />
+        android:text="@string/enter_air_flow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+
 
     <TextView
-        android:id="@+id/outputData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+            android:id="@+id/decrAirFlow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="-"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+        <EditText
+            android:id="@+id/inputBlastFurnaceAirFlow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/air_flow_by_default"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp"
+            android:layout_weight="1"
+
+            />
+        <TextView
+            android:id="@+id/incrAirFlow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+
+        <TextView
+            android:id="@+id/outputData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/answer_by_default"
+            />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/variant1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="21dp"
+        android:layout_gravity="center_horizontal"
         android:onClick="onCalcOxyFlow"
         android:text="@string/find_oxy_flow" />
 </LinearLayout>

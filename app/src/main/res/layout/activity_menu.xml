@@ -14,10 +14,6 @@
         android:id="@+id/oxyFlow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="21dp"
         android:onClick="onFindOxyFlow"
         android:text="@string/find_oxy_flow" />
 
@@ -25,11 +21,113 @@
         android:id="@+id/oxyConc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="21dp"
         android:onClick="onFindOxyConc"
         android:text="@string/find_oxy_conc" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_oxy_in_air_conc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+
+        <TextView
+
+            android:id="@+id/decrOxyInAir"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="-"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+        <EditText
+            android:id="@+id/inputOxyInAirPerc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/oxy_in_air_conc_by_default"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp"
+            android:layout_weight="1"
+
+            />
+        <TextView
+            android:id="@+id/incrOxyInAir"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_oxy_purity" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+
+
+        <TextView
+
+            android:id="@+id/decrOxyPurity"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="-"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+        <EditText
+            android:id="@+id/inputOxyPurity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/oxy_purity_by_default"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp"
+            android:layout_weight="1"
+
+            />
+        <TextView
+            android:id="@+id/incrOxyPurity"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_weight="0"
+
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

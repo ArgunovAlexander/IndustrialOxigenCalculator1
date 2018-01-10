@@ -31,7 +31,9 @@ public class Variant2 extends AppCompatActivity {
     public void onCalcOxyConc(View view) {
         airFlow=getAirFlow();
         oxyFlow=getOxygenFlow();
-        oxyConc=CalcOxy.calcEnrichAirOxyConc(airFlow,oxyFlow,CalcOxy.OXYGEN_IN_AIR_CONC_BY_VOL,CalcOxy.OXYGEN_PURITY);
+        double oxyPur=getIntent().getDoubleExtra("oxyPur",99.5);
+        double oxyInAir=getIntent().getDoubleExtra("oxyInAir",20.7);
+        oxyConc=CalcOxy.calcEnrichAirOxyConc(airFlow,oxyFlow,oxyInAir,oxyPur);
         printOxygenConcentration(oxyConc,airFlow,oxyFlow);
      }
 
