@@ -31,20 +31,19 @@ public class Variant2 extends AppCompatActivity {
     public void onCalcOxyConc(View view) {
         airFlow=getAirFlow();
         oxyFlow=getOxygenFlow();
+
         double oxyPur=getIntent().getDoubleExtra("oxyPur",99.5);
         double oxyInAir=getIntent().getDoubleExtra("oxyInAir",20.7);
+
         oxyConc=CalcOxy.calcEnrichAirOxyConc(airFlow,oxyFlow,oxyInAir,oxyPur);
-        printOxygenConcentration(oxyConc,airFlow,oxyFlow);
+        printOxygenConcentration(oxyConc);
      }
 
-    private void printOxygenConcentration(double oxygenConcentration, double airFlow , double oxygenFlow){
-        String message=format(getString(R.string.enrich_air_oxy_conc)+"\n%.1f\n",oxygenConcentration);
-        message+=format(getString(R.string.air_flow)+"\n%.0f\n",airFlow);
-        message+=format(getString(R.string.oxy_flow)+"\n%.1f\n",oxygenFlow);
+    private void printOxygenConcentration(double oxygenConcentration){
+        String message=format(getString(R.string.enrich_air_oxy_conc)+"= %.1f",oxygenConcentration);
         TextView textView=findViewById(R.id.outputData);
         textView.setText(message);
-        findViewById(R.id.calcMore).setEnabled(true);
-
+        findViewById(R.id.calcMore).setEnabled(true);//разблокирую кнопку уточненного расчета
     }
 
     private double getOxygenFlow() {

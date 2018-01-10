@@ -7,12 +7,12 @@ package com.argunov.industrialoxigencalculator;
         import android.view.inputmethod.InputMethodManager;
         import android.widget.EditText;
         import android.widget.TextView;
-
         import java.util.Locale;
-
         import static java.lang.String.format;
 
 public class MenuActivity extends Activity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +55,24 @@ public class MenuActivity extends Activity {
     }
 
     public void onFindOxyFlow(View view) {
+        EditText edit1=(EditText)findViewById(R.id.inputOxyPurity);
+        EditText edit2=findViewById(R.id.inputOxyInAirPerc);
+        double oxyPur=Double.valueOf(edit1.getText().toString());
+        double oxyPer=Double.valueOf(edit2.getText().toString());
         Intent intent = new Intent(this, Variant1.class);
-        EditText oxyPur=findViewById(R.id.inputOxyPurity);
-        EditText oxyPer=findViewById(R.id.inputOxyInAirPerc);
-        intent.putExtra("oxyPurity", Double.valueOf(oxyPur.toString()))
-        .putExtra("oxyInAir", Double.valueOf(oxyPer.toString()));
+        intent.putExtra("oxyPurity", oxyPur)
+                .putExtra("oxyInAir", oxyPer);
         startActivity(intent);
     }
 
     public void onFindOxyConc(View view) {
+        EditText edit1=findViewById(R.id.inputOxyPurity);
+        EditText edit2=findViewById(R.id.inputOxyInAirPerc);
+        double oxyPur=Double.valueOf(edit1.getText().toString());
+        double oxyPer=Double.valueOf(edit2.getText().toString());
         Intent intent = new Intent(this, Variant2.class);
+        intent.putExtra("oxyPurity", oxyPur)
+                .putExtra("oxyInAir", oxyPer);
         startActivity(intent);
     }
 
