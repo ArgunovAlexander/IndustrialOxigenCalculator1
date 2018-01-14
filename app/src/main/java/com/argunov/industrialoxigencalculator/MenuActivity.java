@@ -55,7 +55,7 @@ public class MenuActivity extends Activity {
     }
 
     public void onFindOxyFlow(View view) {
-        EditText edit1=(EditText)findViewById(R.id.inputOxyPurity);
+        EditText edit1=findViewById(R.id.inputOxyPurity);
         EditText edit2=findViewById(R.id.inputOxyInAirPerc);
         double oxyPur=Double.valueOf(edit1.getText().toString());
         double oxyPer=Double.valueOf(edit2.getText().toString());

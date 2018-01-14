@@ -39,7 +39,7 @@
 
             />
         <EditText
-            android:id="@+id/inputEnrichAirOxyConc"
+            android:id="@+id/inputOxyConc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/air_conc_by_default"
@@ -77,8 +77,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp">
 
-
-
     <TextView
 
             android:id="@+id/decrAirFlow"
@@ -93,7 +91,7 @@
 
             />
         <EditText
-            android:id="@+id/inputBlastFurnaceAirFlow"
+            android:id="@+id/inputAirFlow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/air_flow_by_default"
@@ -114,15 +112,9 @@
             android:text="+"
             android:textSize="20sp"
             android:layout_weight="0"
-
             />
 
-
     </LinearLayout>
-
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -142,11 +134,11 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/variant1"
+    <TextView
+        android:id="@+id/onCalcOxyFlow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:onClick="onCalcOxyFlow"
-        android:text="@string/find_oxy_flow" />
+        android:text="@string/find_oxy_flow"
+        android:textSize="20sp"/>
 </LinearLayout>
