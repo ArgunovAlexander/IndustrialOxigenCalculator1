@@ -10,19 +10,19 @@
     android:paddingTop="16dp"
     tools:context=".MenuActivity">
 
-    <Button
+    <TextView
         android:id="@+id/oxyFlow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onFindOxyFlow"
-        android:text="@string/find_oxy_flow" />
+        android:text="@string/find_oxy_flow"
+        android:layout_marginBottom="20sp"/>
 
-    <Button
+    <TextView
         android:id="@+id/oxyConc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onFindOxyConc"
-        android:text="@string/find_oxy_conc" />
+        android:text="@string/find_oxy_conc"
+        android:layout_marginBottom="20sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp">
+        >
 
 
         <TextView
@@ -75,6 +75,13 @@
             />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/warning_oxyInAir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -129,5 +136,11 @@
             />
 
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/warning_oxyPurity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:layout_marginBottom="16dp"/>
 </LinearLayout>

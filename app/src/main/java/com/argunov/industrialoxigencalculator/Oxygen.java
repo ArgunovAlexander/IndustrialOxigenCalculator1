@@ -1,46 +1,71 @@
 package com.argunov.industrialoxigencalculator;
-import android.view.inputmethod.InputMethodManager;
-import android.content.Context;
+
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.Locale;
-import android.view.View;
 
 import static java.lang.String.format;
 
 
-class Oxygen {
-    //double oxyInAir=getIntent().getDoubleExtra("oxyInAir",20.7);
-    //double oxyPurity=getIntent().getDoubleExtra("oxyPur",99.5);
+ class Oxygen {
     private double oxyConc;
     private double oxyFlow;
     private double oxyInAir;
     private double oxyPurity;
     private double airFlow;
     private double furnaceOxyConc;
-    Oxygen() {
-        this.airFlow=0;
-        this.oxyConc=0;
-        this.oxyFlow=0;
-        this.oxyInAir=0;
-        this.oxyPurity=0;
-        this.furnaceOxyConc=0;
-    }
-    Oxygen(double oxyConc,double oxyFlow,double oxyInAir, double oxyPurity,
-           double airFlow, double furnaceOxyConc){
-        this.airFlow=airFlow;
-        this.oxyConc=oxyConc;
-        this.oxyFlow=oxyFlow;
-        this.oxyInAir=oxyInAir;
-        this.oxyPurity=oxyPurity;
-        this.furnaceOxyConc=furnaceOxyConc;
+
+    public static class Builder{
+        private double oxyConc=0;
+        private double oxyFlow=0;
+        private double oxyInAir=0;
+        private double oxyPurity=0;
+        private double airFlow=0;
+        private double furnaceOxyConc=0;
+         Oxygen.Builder oxyConc(double oxyConc) {
+            this.oxyConc=oxyConc;
+            return this;
+        }
+        public Oxygen.Builder oxyFlow(double oxyFlow) {
+            this.oxyFlow=oxyFlow;
+            return this;
+        }
+         Oxygen.Builder oxyInAir(double oxyInAir) {
+            this.oxyInAir=oxyInAir;
+            return this;
+        }
+         Oxygen.Builder oxyPurity(double oxyPurity) {
+            this.oxyPurity=oxyPurity;
+            return this;
+        }
+         Oxygen.Builder airFlow(double airFlow) {
+            this.airFlow=airFlow;
+            return this;
+        }
+        public Oxygen.Builder furnaceOxyConc(double furnaceOxyConc) {
+            this.furnaceOxyConc=furnaceOxyConc;
+            return this;
+        }
+         Oxygen build() {
+            return new Oxygen(this);
+        }
     }
 
-    double calcOxyFlow(EditText oxyConcEtTxt, EditText airFlowEtTxt) {
-        oxyConc=setParam(oxyConcEtTxt);
-        airFlow=setParam(airFlowEtTxt);
+    private Oxygen() {
+        super();
+    }
+    private Oxygen(Oxygen.Builder builder){
+        airFlow=builder.airFlow;
+        oxyConc=builder.oxyConc;
+        oxyFlow=builder.oxyFlow;
+        oxyInAir=builder.oxyInAir;
+        oxyPurity=builder.oxyPurity;
+        furnaceOxyConc=builder.furnaceOxyConc;
+    }
+
+    double calcOxyFlow() {
+        //oxyConc=setParam(oxyConcEtTxt);
+        //airFlow=setParam(airFlowEtTxt);
         return (airFlow*(oxyConc-oxyInAir))/(oxyPurity-oxyInAir);
     }
 
@@ -57,11 +82,11 @@ class Oxygen {
         return oxyFlow*(oxyPurity-oxyInAir)/(furnaceOxyConc-oxyInAir)-airFlow;
     }
 
-    double setParam(EditText editText) {
+     static double setParam(EditText editText) {
         return isEmpty(editText) ? 0 :Double.valueOf(editText.getText().toString()) ;
     }
 
-    boolean isEmpty(EditText editText) {
+    private static boolean isEmpty(EditText editText) {
         if (editText.getText().toString().trim().length() > 0) {
             return false;
         } else {
@@ -70,7 +95,7 @@ class Oxygen {
         }
     }
 
-    void dispToast() {
+    private static void dispToast() {
         //Toast.makeText(this, getString(R.string.message), Toast.LENGTH_LONG ).show();
     }
 
@@ -80,7 +105,7 @@ class Oxygen {
         textView.setText(message);
     }
 
-    void hideKeyboard() {
+     void hideKeyboard() {
 //        View view = this.getCurrentFocus();
 //        if (view != null) {
 //            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

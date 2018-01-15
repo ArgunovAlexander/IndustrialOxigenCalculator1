@@ -5,12 +5,15 @@ package com.argunov.industrialoxigencalculator;
         import android.os.Bundle;
         import android.view.View;
         import android.view.inputmethod.InputMethodManager;
+        import android.widget.Button;
         import android.widget.EditText;
         import android.widget.TextView;
         import java.util.Locale;
         import static java.lang.String.format;
 
 public class MenuActivity extends Activity {
+    EditText inputOxyPurity=null;
+    EditText inputOxyInAirPerc=null;
 
 
     @Override
@@ -18,69 +21,75 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        inputOxyPurity=findViewById(R.id.inputOxyPurity);
+        inputOxyInAirPerc=findViewById(R.id.inputOxyInAirPerc);
+
         TextView incrOxyInAir=findViewById(R.id.incrOxyInAir);
-        incrOxyInAir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                increment((EditText) findViewById(R.id.inputOxyInAirPerc),0.1d,"%.1f");
-            }
-        });
-
-
         TextView decrOxyInAir=findViewById(R.id.decrOxyInAir);
-        decrOxyInAir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                increment((EditText) findViewById(R.id.inputOxyInAirPerc),-0.1d,"%.1f");
-            }
-        });
-
         TextView incrOxyPurity=findViewById(R.id.incrOxyPurity);
-        incrOxyPurity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                increment((EditText) findViewById(R.id.inputOxyPurity),0.1d,"%.1f");
-            }
-        });
-
-
         TextView decrOxyPurity=findViewById(R.id.decrOxyPurity);
-        decrOxyPurity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                increment((EditText) findViewById(R.id.inputOxyPurity),-0.1d,"%.1f");
+
+        TextView oxyFlow=findViewById(R.id.oxyFlow);
+        TextView oxyConc=findViewById(R.id.oxyConc);
+
+        incrOxyInAir.setOnClickListener(new StepperInputListener(inputOxyInAirPerc,0.1d,"%.1f"));
+        decrOxyInAir.setOnClickListener(new StepperInputListener(inputOxyInAirPerc,-0.1d,"%.1f"));
+        incrOxyPurity.setOnClickListener(new StepperInputListener(inputOxyPurity,0.1d,"%.1f"));
+        decrOxyPurity.setOnClickListener(new StepperInputListener(inputOxyPurity,-0.1d,"%.1f"));
+
+        oxyFlow.setOnClickListener(new ButtonsListener(this, Variant1.class));
+        oxyConc.setOnClickListener(new ButtonsListener(this, Variant2.class));
+    }
+
+    class StepperInputListener implements View.OnClickListener {
+        EditText editText;
+        double step;
+        String format;
+        StepperInputListener (EditText editText, double step, String format) {
+            this.editText=editText;
+            this.step=step;
+            this.format=format;
+        }
+        public void onClick(View view){
+            incrementView();
+        }
+        private void incrementView() {
+            hideKeyboard();
+            double value=Double.valueOf(editText.getText().toString());
+            value+=step;
+            editText.setText(format(Locale.US,format,value));
+        }
+    }
+
+    class ButtonsListener implements View.OnClickListener {
+        Class<?> cls;
+        Context packageContext;
+        ButtonsListener (Context packageContext,Class<?> cls) {
+            this.cls=cls;
+            this.packageContext=packageContext;
+        }
+        public void onClick(View view){
+            double oxyPur=Double.valueOf(inputOxyPurity.getText().toString());
+            double oxyPer=Double.valueOf(inputOxyInAirPerc.getText().toString());
+            TextView warningOxyPurity=findViewById(R.id.warning_oxyPurity);
+            TextView warningOxyInAir=findViewById(R.id.warning_oxyInAir);
+            warningOxyInAir.setText("");
+            warningOxyPurity.setText("");
+
+             if (isCorrect(oxyPur,20,99.5f, warningOxyPurity)&&isCorrect(oxyPer,20,22, warningOxyInAir)) {
+                Intent intent = new Intent(packageContext, cls);
+                intent.putExtra("oxyPurity", oxyPur)
+                        .putExtra("oxyInAir", oxyPer);
+                startActivity(intent);
             }
-        });
-
-    }
-
-    public void onFindOxyFlow(View view) {
-        EditText edit1=findViewById(R.id.inputOxyPurity);
-        EditText edit2=findViewById(R.id.inputOxyInAirPerc);
-        double oxyPur=Double.valueOf(edit1.getText().toString());
-        double oxyPer=Double.valueOf(edit2.getText().toString());
-        Intent intent = new Intent(this, Variant1.class);
-        intent.putExtra("oxyPurity", oxyPur)
-                .putExtra("oxyInAir", oxyPer);
-        startActivity(intent);
-    }
-
-    public void onFindOxyConc(View view) {
-        EditText edit1=findViewById(R.id.inputOxyPurity);
-        EditText edit2=findViewById(R.id.inputOxyInAirPerc);
-        double oxyPur=Double.valueOf(edit1.getText().toString());
-        double oxyPer=Double.valueOf(edit2.getText().toString());
-        Intent intent = new Intent(this, Variant2.class);
-        intent.putExtra("oxyPurity", oxyPur)
-                .putExtra("oxyInAir", oxyPer);
-        startActivity(intent);
-    }
-
-    private void increment(EditText editText, double step, String format) {
-        hideKeyboard();
-        double value=Double.valueOf(editText.getText().toString());
-        value+=step;
-        editText.setText(format(Locale.US,format,value));
+        }
+        private boolean isCorrect(double value, double min, double max, TextView textView) {
+            if (value<min||value>max) {
+                textView.setText(format(Locale.US,"Введите число между %1$.1f и %2$.1f ",min,max));
+                return false;
+            }
+            return true;
+        }
     }
 
     private void hideKeyboard() {
@@ -90,5 +99,4 @@ public class MenuActivity extends Activity {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
-
 }
