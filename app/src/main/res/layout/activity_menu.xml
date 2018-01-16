@@ -29,7 +29,7 @@
         android:text="@string/enter_oxy_in_air_conc" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
@@ -41,7 +41,6 @@
             android:id="@+id/decrOxyInAir"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
             android:background="@color/colorAccent"
             android:textAlignment="center"
             android:text="-"
@@ -51,27 +50,34 @@
             />
         <EditText
             android:id="@+id/inputOxyInAirPerc"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/oxy_in_air_conc_by_default"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="20sp"
-            android:layout_weight="1"
 
             />
         <TextView
             android:id="@+id/incrOxyInAir"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
             android:background="@color/colorAccent"
             android:textAlignment="center"
             android:text="+"
             android:textSize="20sp"
-            android:layout_weight="0"
 
+            />
+        <TextView
+            android:id="@+id/toDefaultOxyInAir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="to \ndefault"
+            android:textSize="20sp"
+            android:layout_marginLeft="16dp"
             />
 
     </LinearLayout>
@@ -89,7 +95,7 @@
         android:text="@string/enter_oxy_purity" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
@@ -102,25 +108,20 @@
             android:id="@+id/decrOxyPurity"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
             android:background="@color/colorAccent"
             android:textAlignment="center"
             android:text="-"
             android:textSize="20sp"
-            android:layout_weight="0"
-
             />
         <EditText
             android:id="@+id/inputOxyPurity"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/oxy_purity_by_default"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="20sp"
-            android:layout_weight="1"
-
             />
         <TextView
             android:id="@+id/incrOxyPurity"
@@ -133,6 +134,16 @@
             android:textSize="20sp"
             android:layout_weight="0"
 
+            />
+        <TextView
+            android:id="@+id/toDefaultOxyPurity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="to \ndefault"
+            android:textSize="20sp"
+            android:layout_marginLeft="16dp"
             />
 
     </LinearLayout>

@@ -20,7 +20,7 @@ public class Variant1 extends AppCompatActivity {
     EditText inputAirFlow = null;
     TextView onCalcOxyFlow = null;
     TextView outputData = null;
-    Oxygen o=null;
+    Oxygen o;
 
 
     @Override

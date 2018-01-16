@@ -12,8 +12,8 @@ package com.argunov.industrialoxigencalculator;
         import static java.lang.String.format;
 
 public class MenuActivity extends Activity {
-    EditText inputOxyPurity=null;
-    EditText inputOxyInAirPerc=null;
+    EditText inputOxyPurity;
+    EditText inputOxyInAirPerc;
 
 
     @Override
@@ -29,6 +29,9 @@ public class MenuActivity extends Activity {
         TextView incrOxyPurity=findViewById(R.id.incrOxyPurity);
         TextView decrOxyPurity=findViewById(R.id.decrOxyPurity);
 
+        TextView toDefaultOxyPurity=findViewById(R.id.toDefaultOxyPurity);
+        TextView toDefaultOxyInAir=findViewById(R.id.toDefaultOxyInAir);
+
         TextView oxyFlow=findViewById(R.id.oxyFlow);
         TextView oxyConc=findViewById(R.id.oxyConc);
 
@@ -36,6 +39,9 @@ public class MenuActivity extends Activity {
         decrOxyInAir.setOnClickListener(new StepperInputListener(inputOxyInAirPerc,-0.1d,"%.1f"));
         incrOxyPurity.setOnClickListener(new StepperInputListener(inputOxyPurity,0.1d,"%.1f"));
         decrOxyPurity.setOnClickListener(new StepperInputListener(inputOxyPurity,-0.1d,"%.1f"));
+
+        toDefaultOxyPurity.setOnClickListener(new ToDefaultListener(inputOxyPurity,"99.5"));
+        toDefaultOxyInAir.setOnClickListener(new ToDefaultListener(inputOxyInAirPerc,"20.7"));
 
         oxyFlow.setOnClickListener(new ButtonsListener(this, Variant1.class));
         oxyConc.setOnClickListener(new ButtonsListener(this, Variant2.class));
@@ -89,6 +95,18 @@ public class MenuActivity extends Activity {
                 return false;
             }
             return true;
+        }
+    }
+
+    class ToDefaultListener implements View.OnClickListener{
+        EditText editText=null;
+        String value="";
+        ToDefaultListener(EditText editText,String value) {
+            this.editText=editText;
+            this.value=value;
+        }
+        public void onClick(View view) {
+            editText.setText(value);
         }
     }
 
